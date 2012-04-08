@@ -10,5 +10,12 @@ public class SDAttrActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+		
+		ShellInterface rootshell = new ShellInterface();
+		
+		if(rootshell.isSuAvailable())
+		{
+			rootshell.runCommand("fatattr -hras /mnt/sdcard/*");
+		}
     }
 }
