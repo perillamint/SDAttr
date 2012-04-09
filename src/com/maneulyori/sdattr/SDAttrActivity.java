@@ -3,9 +3,11 @@ package com.maneulyori.sdattr;
 import java.io.*;
 import android.app.Activity;
 import android.os.Bundle;
+import android.widget.Toast;
 import android.util.Log;
 import android.content.res.*;
 import com.maneulyori.sdattr.utils.*;
+import com.maneulyori.sdattr.*;
 
 public class SDAttrActivity extends Activity {
     /** Called when the activity is first created. */
@@ -45,8 +47,20 @@ public class SDAttrActivity extends Activity {
 		
 		if(ShellInterface.isSuAvailable())
 		{
+			Log.i("SDAttr", "Executing chmod 755 on fatattr");
 			ShellInterface.runCommand("chmod 755 /data/data/com.maneulyori.sdattr/fatattr");
-			ShellInterface.runCommand("/data/data/com.maneulyori.sdattr/fatattr -h -a -s /mnt/sdcard/*");
+			
+			//TODO: Someday, I'll clean this finding routine.
+			Toast toast = Toast.makeText(this, "FIXING...", Toast.LENGTH_LONG);
+			toast.show();
+			
+			ShellInterface.runCommand("/data/data/com.maneulyori.sdattr/fatattr -h -a -s `find /sdcard -maxdepth 1`");
+			ShellInterface.runCommand("/data/data/com.maneulyori.sdattr/fatattr -h -a -s /sdcard/*");
+		}
+		else
+		{
+			Toast toast = Toast.makeText(this, "This app require ROOT permission to run!", Toast.LENGTH_LONG);
+			toast.show();
 		}
     }
 }
