@@ -42,6 +42,7 @@ public class SDAttrActivity extends Activity {
 			Log.i("SDAttr", "writing fatattr binary...");
 			outStream.writeTo(fdattrFile);
 			outStream.close();
+			fdattrFile.close();
 			
 			Toast toast = Toast.makeText(this, "fatattr binary is successfully installed!\nPlease restart the app!", Toast.LENGTH_LONG);
 			toast.show();
@@ -52,9 +53,6 @@ public class SDAttrActivity extends Activity {
 			Log.e("SDAttr", "file not found! Cannot write fatattr binary!");
 		}
 		}
-		
-		if(!firstrun)
-		{
 		
 		if(ShellInterface.isSuAvailable())
 		{
@@ -73,7 +71,6 @@ public class SDAttrActivity extends Activity {
 		{
 			Toast toast = Toast.makeText(this, "This app require ROOT permission to run!", Toast.LENGTH_LONG);
 			toast.show();
-		}
 		}
     }
 }
