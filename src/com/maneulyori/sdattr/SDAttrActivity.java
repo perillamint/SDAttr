@@ -44,7 +44,7 @@ public class SDAttrActivity extends Activity {
 			outStream.close();
 			fdattrFile.close();
 			
-			Toast toast = Toast.makeText(this, "fatattr binary is successfully installed!\nPlease restart the app!", Toast.LENGTH_LONG);
+			Toast toast = Toast.makeText(this, "fatattr binary is successfully installed!", Toast.LENGTH_LONG);
 			toast.show();
 			firstrun = true;
 		}
@@ -63,8 +63,6 @@ public class SDAttrActivity extends Activity {
 			Toast toast = Toast.makeText(this, "FIXING...", Toast.LENGTH_LONG);
 			toast.show();
 			
-			//fc.FileCrawler("/sdcard");
-			//ShellInterface.runCommand("/data/data/com.maneulyori.sdattr/fatattr -h -a -s `find /sdcard -maxdepth 1`");
 			ShellInterface.getAllProcessOutput("/data/data/com.maneulyori.sdattr/fatattr -h -a -s /sdcard/*");
 		}
 		else
