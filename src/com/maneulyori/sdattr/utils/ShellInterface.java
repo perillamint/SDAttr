@@ -94,6 +94,14 @@ public class ShellInterface {
       return null;
     }
   }
+  
+  public static String getAllProcessOutput(String command) {
+	  try {
+			return _runCommand(command, OUTPUT.STDOUT);
+		} catch (IOException ignored) {
+			return null;
+		}
+	}
 
   public static boolean runCommand(String command) {
     try {
