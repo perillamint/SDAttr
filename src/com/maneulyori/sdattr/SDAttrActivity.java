@@ -54,11 +54,14 @@ public class SDAttrActivity extends Activity {
 		}
 		}
 		
-		if(ShellInterface.isSuAvailable())
+		if(firstrun)
 		{
 			Log.i("SDAttr", "Executing chmod 755 on fatattr");
-			ShellInterface.runCommand("chmod 755 /data/data/com.maneulyori.sdattr/fatattr");
-			
+			ShellInterface.runCommand("sync; chmod 755 /data/data/com.maneulyori.sdattr/fatattr");
+		}
+		
+		if(ShellInterface.isSuAvailable())
+		{
 			//TODO: Someday, I'll add recursive feature in here.
 			Toast toast = Toast.makeText(this, "Fixing file attribute...", Toast.LENGTH_SHORT);
 			toast.show();
