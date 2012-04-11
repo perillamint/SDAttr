@@ -62,11 +62,17 @@ public class SDAttrActivity extends Activity {
 		
 		if(ShellInterface.isSuAvailable())
 		{
-			//TODO: Someday, I'll add recursive feature in here.
-			Toast toast = Toast.makeText(this, "Fixing file attribute...", Toast.LENGTH_SHORT);
-			toast.show();
-			
-			ShellInterface.runCommand("/data/data/com.maneulyori.sdattr/fatattr -h -a -s /sdcard/*");
+		Runnable fileFixer = new FileFixer();
+		
+		Toast toast = Toast.makeText(this, "Fixing file attribute...", Toast.LENGTH_SHORT);
+		toast.show();
+		
+		Thread fixerThread = new Thread(fileFixer);
+
+		fixerThread.setDaemon(true);
+		fixerThread.setName("FixerThread");
+		fixerThread.start();
+
 			toast = Toast.makeText(this, "Finished. Now you can close this app.", Toast.LENGTH_LONG);
 			toast.show();
 		}
