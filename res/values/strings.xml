@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="copyright">SD attribute fixer by maneulyori - alpha version. \nBug report and suggestion: maneulyori@gmail.com\nLicensed under GPL v3</string>
+    <string name="copyright">SD attribute fixer by maneulyori - alpha version. \nBug report and suggestion: maneulyori@gmail.com\nLicensed under GPL v3\nSource code is avaliable at https://github.com/maneulyori/SDAttr</string>
     <string name="app_name">SDAttr</string>
 
 </resources>

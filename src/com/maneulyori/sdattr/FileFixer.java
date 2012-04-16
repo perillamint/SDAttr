@@ -12,7 +12,7 @@ public class FileFixer implements Runnable
 		if(ShellInterface.isSuAvailable())
 		{
 			//TODO: Someday, I'll add recursive feature in here.
-			ShellInterface.runCommand("/data/data/com.maneulyori.sdattr/fatattr -h -a -s /sdcard/*");
+			ShellInterface.runCommand("/data/data/com.maneulyori.sdattr/fatattr -r -h -a -s /sdcard/*");
 		}
 	}
 }
